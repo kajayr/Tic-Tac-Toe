@@ -12,15 +12,23 @@ public class Main {
         System.out.println("Do you want to be X or O?");
         String c = "O";
         int count = 1;
-        String p = scanner.next();
-        if(p.equals("O")){
-            c = "X";
+        String p = "";
+        try{
+            p = scanner.next();
+            if(p.length() > 1){
+                throw new Exception();
+            }
+            if(p.equals("O")){
+                c = "X";
+            }
+            System.out.println("You have chose " + p + " let's start the game. Computer starts first");
+        }catch (Exception e){
+            System.out.println("Warning: You should only choose a single character");
         }
         ArrayList<String> b = new ArrayList<>(9);
         for(int i = 0; i < 10; i++){
             b.add("");
         }
-        System.out.println("You have chose " + p + " let's start the game. Computer starts first");
         b.remove(0);
         b.add(0, c);
         board.showBoard(b);
@@ -28,7 +36,12 @@ while(count < 10){
     int num = 0;
     if(count % 2 != 0){
         System.out.println("choose a number between 1 - 9");
-        num = scanner.nextInt();
+        try{
+            num = scanner.nextInt();
+        }catch (Exception e){
+            System.out.println("Warning: The input should be a number");
+        }
+
         b.set(num, p);
     }
     if(count % 2 == 0){
