@@ -3,7 +3,9 @@ package com.company;
 import java.util.*;
 
 public class Main {
-
+public static ArrayList<String> getData(ArrayList<String> b){
+    return b;
+}
     public static void main(String[] args) {
         Win win = new Win();
         Board board = new Board();
@@ -32,6 +34,7 @@ public class Main {
         b.remove(0);
         b.add(0, c);
         board.showBoard(b);
+        Main.getData(b);
 while(count < 10){
     int num = 0;
     if(count % 2 != 0){
